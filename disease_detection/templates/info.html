@@ -1,0 +1,122 @@
+{% load static %}
+<!-- info.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Information</title>
+    <link rel="stylesheet" href="{% static 'css/info.css' %}">
+    <!-- Add necessary CSS and JS includes here -->
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'home' %}" class="active">Home</a>
+        <a href="{% url 'about_us' %}">About Us</a>
+        <a href="{% url 'info' %}">Info</a>
+        <a href="{% url 'detection' %}">Disease Detection</a>
+    </div>
+    <h1>Information</h1>
+
+    <!-- Display the data for Chest Disease -->
+    <h2>Chest Disease Data</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Patient ID</th>
+                <th>Patient Name</th>
+                <th>Patient Email</th>
+                <th>Patient Disease</th>
+                <!-- Add other relevant fields for ChestDiseaseModel -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in chest_disease_data %}
+                <tr>
+                    <td>{{ item.p_id }}</td>
+                    <td>{{ item.p_name }}</td>
+                    <td>{{ item.p_email }}</td>
+                    <td>{{item.p_disease}}</td>
+                    <!-- Add other relevant fields for ChestDiseaseModel -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+
+    <h2>Skin Disease Data</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Patient ID</th>
+                <th>Patient Name</th>
+                <th>Patient Email</th>
+                <th>Patient Disease</th>
+                <!-- Add other relevant fields for ChestDiseaseModel -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in skin_disease_data %}
+                <tr>
+                    <td>{{ item.p_id }}</td>
+                    <td>{{ item.p_name }}</td>
+                    <td>{{ item.p_email }}</td>
+                    <td>{{item.p_disease}}</td>
+                    <!-- Add other relevant fields for ChestDiseaseModel -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Brain Disease Data</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Patient ID</th>
+                <th>Patient Name</th>
+                <th>Patient Email</th>
+                <th>Patient Disease</th>
+                <!-- Add other relevant fields for ChestDiseaseModel -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in brain_tumor_data %}
+                <tr>
+                    <td>{{ item.p_id }}</td>
+                    <td>{{ item.p_name }}</td>
+                    <td>{{ item.p_email }}</td>
+                    <td>{{item.p_disease}}</td>
+                    <!-- Add other relevant fields for ChestDiseaseModel -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Kideny Disease Data</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Patient ID</th>
+                <th>Patient Name</th>
+                <th>Patient Email</th>
+                <th>Patient Disease</th>
+                <!-- Add other relevant fields for ChestDiseaseModel -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in kidney_disease_data %}
+                <tr>
+                    <td>{{ item.p_id }}</td>
+                    <td>{{ item.p_name }}</td>
+                    <td>{{ item.p_email }}</td>
+                    <td>{{item.p_disease}}</td>
+                    <!-- Add other relevant fields for ChestDiseaseModel -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Similar sections for displaying SkinDiseaseModel and KidneyDiseaseModel data -->
+
+    <a href="{% url 'home' %}">Home</a> | <a href="{% url 'about_us' %}">About Us</a> | <a href="{% url 'detection' %}">Disease Detection</a>
+</body>
+</html>

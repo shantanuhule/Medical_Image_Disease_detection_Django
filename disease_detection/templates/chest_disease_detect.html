@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chest Disease Detection</title>
+    <link rel="stylesheet" href="{% static 'css/detection-page.css' %}">
+    <!-- Add necessary CSS and JS includes here -->
+    
+    <script>
+        function previewImage(event) {
+            const imagePreview = document.getElementById('img-preview');
+            const selectedFile = event.target.files[0];
+
+            if (selectedFile) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    imagePreview.src = reader.result;
+                };
+                reader.readAsDataURL(selectedFile);
+            } else {
+                // If no file is selected, reset the preview to the placeholder image
+                imagePreview.src = "{% static 'images/placeholder.png' %}";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'home' %}" class="active">Home</a>
+        <a href="{% url 'about_us' %}">About Us</a>
+        <a href="{% url 'info' %}">Info</a>
+        <a href="{% url 'detection' %}">Disease Detection</a>
+    </div>
+    <h1>Chest Disease Detection</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% comment %} {{ form.as_p }} {% endcomment %}
+        <div>
+            
+            {{ form.p_id.label }}
+            {{ form.p_id }}
+        </div>
+        <div>
+            
+            {{ form.p_name.label }}
+            {{ form.p_name }}
+        </div>
+        <div>
+            
+            {{ form.p_email.label }}
+            {{ form.p_email }}
+        </div>
+        <div class="image-preview">
+            
+            {{ form.p_image.label }}
+            {% comment %} <input type="file" name="p_image" id="imageUpload" accept=".png, .jpg, .jpeg" onchange="previewImage(event)"> {% endcomment %}
+            {{ form.p_image }}
+            
+        </div>
+        <button type="submit">Detect</button>
+    </form>
+    
+    
+    {% if result %}
+        <p>Result: {{ result }}</p>
+    {% endif %}
+    {% comment %} <a href="{% url 'detection' %}">Back to Disease Detection</a> {% endcomment %}
+</body>
+</html>

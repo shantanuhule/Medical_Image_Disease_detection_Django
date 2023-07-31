@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kidney Disease Detection</title>
+    <link rel="stylesheet" href="{% static 'css/detection-page.css' %}">
+    <!-- Add necessary CSS and JS includes here -->
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'home' %}" class="active">Home</a>
+        <a href="{% url 'about_us' %}">About Us</a>
+        <a href="{% url 'info' %}">Info</a>
+        <a href="{% url 'detection' %}">Disease Detection</a>
+    </div>
+    <h1>Kidney Disease Detection</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% comment %} {{ form.as_p }} {% endcomment %}
+        <div>
+            
+            {{ form.p_id.label }}
+            {{ form.p_id }}
+        </div>
+        <div>
+            
+            {{ form.p_name.label }}
+            {{ form.p_name }}
+        </div>
+        <div>
+            
+            {{ form.p_email.label }}
+            {{ form.p_email }}
+        </div>
+        <div>
+            
+            {{ form.p_image.label }}
+            {{ form.p_image }}
+        </div>
+        <button type="submit">Detect</button>
+    </form>
+    {% if result %}
+        <p>Result: {{ result }}</p>
+    {% endif %}
+    <a href="{% url 'detection' %}">Back to Disease Detection</a>
+</body>
+</html>

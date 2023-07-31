@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical Image Classification</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'css/styles.css' %}"> {% endcomment %}
+</head>
+<body>
+    
+    <div class="video-container">
+        <video autoplay muted loop id="video-background">
+            <!-- Replace 'path_to_video.mp4' with the actual path to your video file -->
+            <source src="{% static 'videos/Title.mp4' %}" type="video/mp4">
+            <!-- Add other video formats if needed (e.g., WebM, Ogg) -->
+            <!-- <source src="{% static 'path_to_video.webm' %}" type="video/webm"> -->
+            <!-- <source src="{% static 'path_to_video.ogv' %}" type="video/ogg"> -->
+            {% comment %} Your browser does not support the video tag. {% endcomment %}
+        </video>
+        <div class="navbar">
+            <a href="{% url 'home' %}" class="active">Home</a>
+            <a href="{% url 'about_us' %}">About Us</a>
+            <a href="{% url 'info' %}">Info</a>
+            <a href="{% url 'detection' %}">Disease Detection</a>
+        </div>
+        <h1>Welcome to Medical Image Classification</h1>
+        <p>This website is designed to help classify medical images using machine learning.</p>
+    </div>
+
+    <!-- Rest of your content here -->
+
+</body>
+</html>
